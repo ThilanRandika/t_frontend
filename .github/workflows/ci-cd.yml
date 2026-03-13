@@ -12,7 +12,7 @@ env:
   AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
   ECR_REPOSITORY: frontend
   CLUSTER_NAME: ecommerce-cluster
-  SERVICE_NAME: frontend-def-service-ctqt0bpz
+  SERVICE_NAME: frontend-service
 
 jobs:
   build_and_test:
