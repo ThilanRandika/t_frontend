@@ -11,7 +11,7 @@ env:
   AWS_REGION: ${{ secrets.AWS_REGION }}
   AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
   ECR_REPOSITORY: frontend
-  CLUSTER_NAME: audio-cluster
+  CLUSTER_NAME: ecommerce-cluster
   SERVICE_NAME: frontend-def-service-ctqt0bpz
 
 jobs:
