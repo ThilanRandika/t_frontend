@@ -7,11 +7,9 @@ export default function Home() {
       {/* ── Hero ── */}
       <section className="hero">
         <div className="container">
-          <div className="hero-badge">
-            ✨ Microservice Architecture Demo By Thilan
-          </div>
+          <div className="hero-badge">✨ Microservice Architecture Demo</div>
           <h1>
-            The Future of
+            The Future of World
             <br />
             <span>Online Shopping</span>
           </h1>
