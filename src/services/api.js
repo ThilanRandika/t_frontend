@@ -1,13 +1,10 @@
 import axios from "axios";
 
 const USER_SERVICE =
-  import.meta.env.VITE_USER_SERVICE_URL ||
   "http://ecommerce-lb-2011253033.ap-south-1.elb.amazonaws.com:3001";
 const PRODUCT_SERVICE =
-  import.meta.env.VITE_PRODUCT_SERVICE_URL ||
   "http://ecommerce-lb-2011253033.ap-south-1.elb.amazonaws.com:3002";
 const ORDER_SERVICE =
-  import.meta.env.VITE_ORDER_SERVICE_URL ||
   "http://ecommerce-lb-2011253033.ap-south-1.elb.amazonaws.com:3003";
 
 // Helper to inject auth header
