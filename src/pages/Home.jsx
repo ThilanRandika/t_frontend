@@ -9,7 +9,7 @@ export default function Home() {
         <div className="container">
           <div className="hero-badge">✨ Microservice Architecture Demo --</div>
           <h1>
-            The Future of
+            The Future of World
             <br />
             <span>Online Shopping</span>
           </h1>
