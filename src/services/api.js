@@ -59,3 +59,13 @@ export const orderApi = {
     ),
   health: () => axios.get(`${ORDER_SERVICE}/health`),
 };
+
+// ── Notification Service API Client ──────────────────────────────────────────
+const NOTIFICATION_SERVICE = "http://ecommerce-lb-2011253033.ap-south-1.elb.amazonaws.com:3004";
+
+export const notificationApi = {
+  sendWelcome: (data) => axios.post(`${NOTIFICATION_SERVICE}/api/notifications/welcome`, data),
+  sendOrderPlaced: (data) => axios.post(`${NOTIFICATION_SERVICE}/api/notifications/order-placed`, data),
+  getHistory: (email) => axios.get(`${NOTIFICATION_SERVICE}/api/notifications/${email}`)
+};
+

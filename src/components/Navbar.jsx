@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { ShoppingCart, User, LogOut, Package, Home } from 'lucide-react';
+import { ShoppingCart, User, LogOut, Package, Home, Bell } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 
@@ -21,10 +21,12 @@ export default function Navbar() {
         <div className="navbar-links">
           <Link to="/" className="nav-link"><Home size={16} /><span>Home</span></Link>
           <Link to="/products" className="nav-link"><Package size={16} /><span>Products</span></Link>
+          <Link to="/demo" className="nav-link"><Bell size={16} /><span style={{ color: 'var(--color-primary)' }}>Viva Demo</span></Link>
 
           {isAuthenticated ? (
             <>
               <Link to="/orders" className="nav-link"><span>Orders</span></Link>
+              <Link to="/my-notifications" className="nav-link"><span>Inbox</span></Link>
               <button
                 className="nav-link"
                 onClick={() => setIsOpen(true)}

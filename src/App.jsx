@@ -9,6 +9,8 @@ import Products from './pages/Products';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Orders from './pages/Orders';
+import VivaDemo from './pages/VivaDemo';
+import MyNotifications from './pages/MyNotifications';
 import './index.css';
 
 function App() {
@@ -25,6 +27,8 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/orders" element={<Orders />} />
+              <Route path="/demo" element={<VivaDemo />} />
+              <Route path="/my-notifications" element={<MyNotifications />} />
             </Routes>
           </main>
           <Toaster
