@@ -12,9 +12,8 @@ const MyNotifications = () => {
   useEffect(() => {
     // If we only have auth for testing, we might just mock the email if absent
     const fetchHistory = async () => {
-      const email = user?.email || "demo@beddings.lk"; 
       try {
-        const { data } = await notificationApi.getHistory(email);
+        const { data } = await notificationApi.getHistory();
         setNotifications(data.notifications || []);
       } catch (error) {
         console.error(error);

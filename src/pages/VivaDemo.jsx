@@ -7,11 +7,7 @@ const VivaDemo = () => {
   const [loadingWelcome, setLoadingWelcome] = useState(false);
   const [loadingOrder, setLoadingOrder] = useState(false);
 
-  // Mock Payloads for Beddings.lk
-  const welcomePayload = {
-    email: "demo@beddings.lk",
-    name: "Viva Evaluator"
-  };
+
 
   const orderPayload = {
     orderId: "VIVA-2026-001",
@@ -31,18 +27,7 @@ const VivaDemo = () => {
     }
   };
 
-  const handleWelcomeClick = async () => {
-    setLoadingWelcome(true);
-    try {
-      await notificationApi.sendWelcome(welcomePayload);
-      toast.success('Welcome Notification Dispatched Successfully!', { icon: '✉️' });
-    } catch (error) {
-      console.error(error);
-      toast.error('Failed to dispatch Welcome notification. Check ALB connection.');
-    } finally {
-      setLoadingWelcome(false);
-    }
-  };
+
 
   const handleOrderClick = async () => {
     setLoadingOrder(true);
@@ -65,26 +50,6 @@ const VivaDemo = () => {
       </div>
 
       <div className="features">
-        <div className="card feature-card">
-          <div className="flex-center mb-2">
-            <Mail size={48} className="text-primary" />
-          </div>
-          <h3 className="feature-title">Welcome Email Trigger</h3>
-          <p className="feature-desc mb-2">
-            Triggers <code>POST /api/notifications/welcome</code> via AWS ALB.
-            Simulates a successful user registration.
-          </p>
-          <div className="text-left mb-3 p-3 bg-gray-900 rounded-sm" style={{ background: 'var(--color-surface-2)', borderRadius: 'var(--radius-sm)', fontSize: '0.8rem', fontFamily: 'monospace' }}>
-            <pre className="text-muted">{JSON.stringify(welcomePayload, null, 2)}</pre>
-          </div>
-          <button 
-            className="btn btn-primary w-full flex-center gap-1"
-            onClick={handleWelcomeClick}
-            disabled={loadingWelcome}
-          >
-            {loadingWelcome ? 'Dispatching...' : 'Dispatch Welcome Mail'}
-          </button>
-        </div>
 
         <div className="card feature-card">
           <div className="flex-center mb-2">

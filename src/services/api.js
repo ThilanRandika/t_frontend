@@ -1,11 +1,8 @@
 import axios from "axios";
 
-const USER_SERVICE =
-  "http://ecommerce-lb-2011253033.ap-south-1.elb.amazonaws.com:3001";
-const PRODUCT_SERVICE =
-  "http://ecommerce-lb-2011253033.ap-south-1.elb.amazonaws.com:3002";
-const ORDER_SERVICE =
-  "http://ecommerce-lb-2011253033.ap-south-1.elb.amazonaws.com:3003";
+const USER_SERVICE = import.meta.env.VITE_USER_SERVICE_URL || "http://localhost:3001";
+const PRODUCT_SERVICE = import.meta.env.VITE_PRODUCT_SERVICE_URL || "http://localhost:3002";
+const ORDER_SERVICE = import.meta.env.VITE_ORDER_SERVICE_URL || "http://localhost:3003";
 
 // Helper to inject auth header
 const authHeader = () => {
@@ -61,11 +58,10 @@ export const orderApi = {
 };
 
 // ── Notification Service API Client ──────────────────────────────────────────
-const NOTIFICATION_SERVICE = "http://ecommerce-lb-2011253033.ap-south-1.elb.amazonaws.com:3004";
+const NOTIFICATION_SERVICE = import.meta.env.VITE_NOTIFICATION_SERVICE_URL || "http://localhost:3004";
 
 export const notificationApi = {
   sendWelcome: (data) => axios.post(`${NOTIFICATION_SERVICE}/api/notifications/welcome`, data),
   sendOrderPlaced: (data) => axios.post(`${NOTIFICATION_SERVICE}/api/notifications/order-placed`, data),
-  getHistory: (email) => axios.get(`${NOTIFICATION_SERVICE}/api/notifications/${email}`)
+  getHistory: () => axios.get(`${NOTIFICATION_SERVICE}/api/notifications/my-history`, { headers: authHeader() })
 };
-
