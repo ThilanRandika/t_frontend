@@ -20,6 +20,8 @@ export const userApi = {
     axios.put(`${USER_SERVICE}/auth/profile`, data, { headers: authHeader() }),
   verify: () =>
     axios.get(`${USER_SERVICE}/auth/verify`, { headers: authHeader() }),
+  getAllUsers: () => 
+    axios.get(`${USER_SERVICE}/auth/users`, { headers: authHeader() }),
   health: () => axios.get(`${USER_SERVICE}/health`),
 };
 
@@ -54,6 +56,8 @@ export const orderApi = {
       { status },
       { headers: authHeader() },
     ),
+  getAllOrders: (params = {}) => 
+    axios.get(`${ORDER_SERVICE}/orders/all`, { headers: authHeader(), params }),
   health: () => axios.get(`${ORDER_SERVICE}/health`),
 };
 
@@ -69,5 +73,9 @@ export const notificationApi = {
       'Pragma': 'no-cache', 
       'Expires': '0' 
     } 
+  }),
+  getSystemLogs: (params = {}) => axios.get(`${NOTIFICATION_SERVICE}/api/notifications/system-logs`, {
+    headers: authHeader(),
+    params
   })
 };

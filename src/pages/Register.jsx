@@ -19,7 +19,11 @@ export default function Register() {
       const { data } = await userApi.register(form);
       login(data.token, data.user);
       toast.success('Account created successfully! 🎉');
-      navigate('/products');
+      if (data.user.role === 'admin') {
+        navigate('/admin/dashboard');
+      } else {
+        navigate('/products');
+      }
     } catch (err) {
       toast.error(err.response?.data?.error || err.response?.data?.errors?.[0]?.msg || 'Registration failed');
     } finally {
