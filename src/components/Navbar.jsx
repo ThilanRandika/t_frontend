@@ -21,7 +21,6 @@ export default function Navbar() {
         <div className="navbar-links">
           <Link to="/" className="nav-link"><Home size={16} /><span>Home</span></Link>
           <Link to="/products" className="nav-link"><Package size={16} /><span>Products</span></Link>
-          <Link to="/demo" className="nav-link"><Bell size={16} /><span style={{ color: 'var(--color-primary)' }}>Viva Demo</span></Link>
 
           {isAuthenticated ? (
             <>
