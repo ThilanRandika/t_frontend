@@ -16,12 +16,18 @@ export const userApi = {
   login: (data) => axios.post(`${USER_SERVICE}/auth/login`, data),
   getProfile: () =>
     axios.get(`${USER_SERVICE}/auth/profile`, { headers: authHeader() }),
+  getFullProfile: () =>
+    axios.get(`${USER_SERVICE}/auth/profile/full`, { headers: authHeader() }),
   updateProfile: (data) =>
     axios.put(`${USER_SERVICE}/auth/profile`, data, { headers: authHeader() }),
   verify: () =>
     axios.get(`${USER_SERVICE}/auth/verify`, { headers: authHeader() }),
   getAllUsers: () => 
     axios.get(`${USER_SERVICE}/auth/users`, { headers: authHeader() }),
+  deactivateUser: (id) =>
+    axios.put(`${USER_SERVICE}/auth/users/${id}/deactivate`, {}, { headers: authHeader() }),
+  toggleWishlist: (data) =>
+    axios.put(`${USER_SERVICE}/auth/profile/wishlist`, data, { headers: authHeader() }),
   health: () => axios.get(`${USER_SERVICE}/health`),
 };
 

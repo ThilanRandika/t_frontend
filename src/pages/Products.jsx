@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { ShoppingCart, Star } from 'lucide-react';
+import { ShoppingCart, Star, Heart } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { productApi } from '../services/api';
+import { productApi, userApi } from '../services/api';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
 
 const CATEGORIES = ['All', 'Electronics', 'Clothing', 'Books', 'Food', 'Sports', 'Home', 'Other'];
 
@@ -16,6 +17,20 @@ export default function Products() {
   const [category, setCategory] = useState('All');
   const [search, setSearch] = useState('');
   const { addToCart } = useCart();
+  const { isAuthenticated } = useAuth();
+
+  const handleWishlist = async (productId) => {
+    if (!isAuthenticated) {
+      toast.error('Please log in to add items to your wishlist');
+      return;
+    }
+    try {
+      await userApi.toggleWishlist({ productId, action: 'add' });
+      toast.success('Added to wishlist! Check your Profile Dashboard.');
+    } catch (err) {
+      toast.error('Failed to update wishlist');
+    }
+  };
 
   useEffect(() => {
     const params = {};
@@ -87,13 +102,22 @@ export default function Products() {
                         {p.stock > 0 ? `${p.stock} in stock` : <span className="text-danger">Out of stock</span>}
                       </div>
                     </div>
-                    <button
-                      className="btn btn-sm btn-primary"
-                      onClick={() => { addToCart(p); toast.success('Added to cart!'); }}
-                      disabled={p.stock === 0}
-                    >
-                      <ShoppingCart size={14} /> Add
-                    </button>
+                    <div style={{ display: 'flex', gap: '0.5rem' }}>
+                      <button
+                        className="btn btn-sm btn-outline"
+                        onClick={() => handleWishlist(p._id)}
+                        title="Add to Wishlist"
+                      >
+                        <Heart size={14} />
+                      </button>
+                      <button
+                        className="btn btn-sm btn-primary"
+                        onClick={() => { addToCart(p); toast.success('Added to cart!'); }}
+                        disabled={p.stock === 0}
+                      >
+                        <ShoppingCart size={14} /> Add
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

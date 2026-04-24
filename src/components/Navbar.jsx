@@ -42,10 +42,10 @@ export default function Navbar() {
                   }}>{count}</span>
                 )}
               </button>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.4rem 0.8rem', background: 'var(--color-surface-2)', borderRadius: 'var(--radius-sm)', fontSize: '0.85rem' }}>
+              <Link to="/profile" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.4rem 0.8rem', background: 'var(--color-surface-2)', borderRadius: 'var(--radius-sm)', fontSize: '0.85rem', textDecoration: 'none' }}>
                 <User size={14} />
                 <span style={{ color: 'var(--color-text-muted)' }}>{user?.name?.split(' ')[0]}</span>
-              </div>
+              </Link>
               <button className="btn btn-sm btn-outline" onClick={handleLogout}>
                 <LogOut size={14} /> Logout
               </button>
