@@ -61,7 +61,7 @@ export default function AdminLayout() {
             </li>
             <li>
               <Link to="/admin/status-logs" style={getLinkStyle('/admin/status-logs')}>
-                <Activity size={18} /> Status Logs
+                <Activity size={18} /> Activity Log
               </Link>
             </li>
             <li>
